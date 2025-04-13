@@ -1,0 +1,46 @@
+<template>
+    <nav class="bg-gray-800 border-b border-gray-700 py-4 px-6 sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+          <div class="flex items-center space-x-2">
+              <i class="fas fa-font text-2xl text-indigo-400"></i>
+              <span
+                  class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-purple-500 gradient-text-filled">FontShare</span>
+          </div>
+  
+          <div class="hidden md:flex space-x-6">
+              <a href="#" class="hover:text-indigo-300 transition">Explorer</a>
+              <a href="#" class="hover:text-indigo-300 transition">Tendances</a>
+              <a href="#" class="hover:text-indigo-300 transition">Collections</a>
+              <a href="#" class="hover:text-indigo-300 transition">À propos</a>
+          </div>
+  
+          <div class="flex items-center space-x-4">
+              <button
+                  @click="redirectToRegister()" 
+                  class="cursor-pointer bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md font-medium transition">
+                  Connexion
+              </button>
+              <button class="p-2 rounded-full bg-gray-700 hover:bg-gray-600 transition cursor-pointer">
+                  <i class="fas fa-moon w-[24px]"></i>
+              </button>
+          </div>
+      </div>
+  </nav>
+  </template>
+  
+  <script setup>
+  
+  import { useRouter } from 'vue-router';
+  
+  const router = useRouter();
+  
+  const redirectToRegister = () => {
+    router.push("/register");
+  };
+  
+  </script>
+  
+  <style scoped lang="scss">
+  
+  </style>
+  
