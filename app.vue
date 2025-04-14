@@ -14,6 +14,7 @@
 body {
   font-family: 'Inter', sans-serif;
   transition: background-color 0.3s ease;
+  margin: 0;
 }
 .gradient-text-filled {
   background-clip: text;

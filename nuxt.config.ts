@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
     '@nuxt/ui'
   ],
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', '~/assets/css/google-fonts.css'],
   vite: {
     plugins: [
       tailwindcss(),
