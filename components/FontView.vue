@@ -1,25 +1,26 @@
 <template>
     <section class="gradient-text py-12 px-6">
-      <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-7xl mx-auto lg:px-6">
         <div class="flex justify-between items-start">
           <div>
             <h1 class="text-5xl md:text-6xl font-bold mb-4 capitalize" :style="{ fontFamily: fontName }">
               {{ fontName }}
             </h1>
             <div class="flex space-x-2 mb-6">
-              <span class="bg-gray-700 text-xs px-2 py-1 rounded">Sans-serif</span>
-              <span class="bg-indigo-900 text-indigo-300 text-xs px-2 py-1 rounded">Gratuit</span>
-              <span class="bg-gray-700 text-xs px-2 py-1 rounded">Variable</span>
+              <span class="bg-gray-700 text-xs px-2 py-1 rounded capitalize">{{ font.category }}</span>
+              <!-- <span class="bg-indigo-900 text-indigo-300 text-xs px-2 py-1 rounded">Gratuit</span> -->
+              <span v-if="font.variable" class="bg-gray-700 text-xs px-2 py-1 rounded">Variable</span>
+              <span v-else class="bg-gray-700 text-xs px-2 py-1 rounded">Aucune variante</span>
             </div>
             <p class="text-gray-300 max-w-3xl">
               Une police géométrique moderne avec une touche élégante, parfaite pour les titres et les textes.
             </p>
           </div>
           <div class="flex space-x-3">
-            <button class="p-3 rounded-full bg-gray-700 hover:bg-gray-600 transition">
+            <button class="p-3 rounded-full bg-gray-700 hover:bg-gray-600 transition w-[48px] cursor-pointer">
               <i class="far fa-heart"></i>
             </button>
-            <button class="p-3 rounded-full bg-gray-700 hover:bg-gray-600 transition">
+            <button class="p-3 rounded-full bg-gray-700 hover:bg-gray-600 transition  w-[48px] cursor-pointer">
               <i class="fas fa-share-alt"></i>
             </button>
           </div>
@@ -81,28 +82,34 @@
         {{ demoText }}
       </div>
   
-      <!-- Tabs for Specimen, Glyphs etc. -->
-        <!-- <div class="border-b border-gray-700 mb-6">
-            <div class="flex space-x-8">
-                <button class="tab-button pb-2 font-medium active" data-tab="specimen" :style="{ fontFamily: fontName }">Spécimen</button>
-                <button class="tab-button pb-2 font-medium" data-tab="glyphs" :style="{ fontFamily: fontName }">Caractères</button>
-                <button class="tab-button pb-2 font-medium" data-tab="pairing" :style="{ fontFamily: fontName }">Associations</button>
-                <button class="tab-button pb-2 font-medium" data-tab="info" :style="{ fontFamily: fontName }">Informations</button>
-            </div>
-        </div> -->
-        <!-- Tabs -->
             <div class="border-b border-gray-700 mb-6">
-                <div class="flex space-x-8">
-                <button
+                <!-- Mobile : noms courts -->
+                <div class="flex justify-evenly space-x-4 sm:hidden">
+                    <button
+                    v-for="tab in tabs"
+                    :key="tab.id"
+                    class="tab-button pb-2 font-medium"
+                    :class="{ 'active border-b-2 border-white text-white': activeTab === tab.id, 'text-gray-400': activeTab !== tab.id }"
+                    :style="{ fontFamily: fontName }"
+                    @click="activeTab = tab.id"
+                    >
+                    <span>{{ tab.short }}</span>
+                    </button>
+                </div>
+                
+                <!-- SM et + : noms complets -->
+                <div class="hidden sm:flex sm:justify-evenly md:justify-start space-x-8">
+                    <button
                     v-for="tab in tabs"
                     :key="tab.id"
                     class="tab-button pb-2 font-medium"
                     :class="{ 'active border-b-2 border-white text-white': activeTab === tab.id, 'text-gray-400': activeTab !== tab.id }"
                     @click="activeTab = tab.id"
-                >
-                    {{ tab.name }}
-                </button>
+                    >
+                    <span>{{ tab.name }}</span>
+                    </button>
                 </div>
+  
             </div>
             <!-- Tab Panels -->
             <div id="tab-content">
@@ -112,39 +119,39 @@
                     <div class="font-variants-grid mb-8">
                         <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
                             <p class="text-2xl mb-4" :style="{ fontFamily: fontName }" style="font-weight: 100;">Thin 100</p>
-                            <p class="text-gray-400" :style="{ fontFamily: fontName }">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
+                            <p class="text-gray-400" :style="{ fontFamily: fontName }" style="font-weight: 100;">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
                         </div>
                         <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
                             <p class="text-2xl mb-4" :style="{ fontFamily: fontName }" style="font-weight: 200;">ExtraLight 200</p>
-                            <p class="text-gray-400" :style="{ fontFamily: fontName }">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
+                            <p class="text-gray-400" :style="{ fontFamily: fontName }" style="font-weight: 200;">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
                         </div>
                         <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
                             <p class="text-2xl mb-4" :style="{ fontFamily: fontName }" style="font-weight: 300;">Light 300</p>
-                            <p class="text-gray-400" :style="{ fontFamily: fontName }">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
+                            <p class="text-gray-400" :style="{ fontFamily: fontName }" style="font-weight: 300;">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
                         </div>
                         <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
                             <p class="text-2xl mb-4" :style="{ fontFamily: fontName }" style="font-weight: 400;">Regular 400</p>
-                            <p class="text-gray-400" :style="{ fontFamily: fontName }">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
+                            <p class="text-gray-400" :style="{ fontFamily: fontName }" style="font-weight: 400;">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
                         </div>
                         <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
                             <p class="text-2xl mb-4" :style="{ fontFamily: fontName }" style="font-weight: 500;">Medium 500</p>
-                            <p class="text-gray-400" :style="{ fontFamily: fontName }">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
+                            <p class="text-gray-400" :style="{ fontFamily: fontName }" style="font-weight: 500;">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
                         </div>
                         <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
                             <p class="text-2xl mb-4" :style="{ fontFamily: fontName }" style="font-weight: 600;">SemiBold 600</p>
-                            <p class="text-gray-400" :style="{ fontFamily: fontName }">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
+                            <p class="text-gray-400" :style="{ fontFamily: fontName }" style="font-weight: 600;">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
                         </div>
                         <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
                             <p class="text-2xl mb-4" :style="{ fontFamily: fontName }" style="font-weight: 700;">Bold 700</p>
-                            <p class="text-gray-400" :style="{ fontFamily: fontName }">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
+                            <p class="text-gray-400" :style="{ fontFamily: fontName }" style="font-weight: 700;">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
                         </div>
                         <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
                             <p class="text-2xl mb-4" :style="{ fontFamily: fontName }" style="font-weight: 800;">ExtraBold 800</p>
-                            <p class="text-gray-400" :style="{ fontFamily: fontName }">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
+                            <p class="text-gray-400" :style="{ fontFamily: fontName }" style="font-weight: 800;">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
                         </div>
                         <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
                             <p class="text-2xl mb-4" :style="{ fontFamily: fontName }" style="font-weight: 900;">Black 900</p>
-                            <p class="text-gray-400" :style="{ fontFamily: fontName }">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
+                            <p class="text-gray-400" :style="{ fontFamily: fontName }" style="font-weight: 900;">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
                         </div>
                     </div>
                     <h3 class="text-xl font-bold mb-4" >Exemples d'utilisation</h3>
@@ -163,7 +170,7 @@
             
                 <div v-show="activeTab === 'glyphs'" id="glyphs-tab" class="tab-panel">
                 <!-- TON CONTENU DES CARACTÈRES ICI -->
-                    <h2 class="text-2xl font-bold mb-6" :style="{ fontFamily: fontName }">Caractères complets</h2>
+                    <h2 class="text-2xl font-bold mb-6">Caractères complets</h2>
                     
                     <div class="mb-8">
                         <h3 class="text-lg font-medium mb-3" :style="{ fontFamily: fontName }">Majuscules</h3>
@@ -337,29 +344,26 @@
                 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                         <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
-                            <h3 class="text-xl font-bold mb-4" style="font-family: 'Montserrat'">À propos de Montserrat</h3>
-                            <p class="text-gray-400 mb-4">
-                                La police Montserrat, créée par Julieta Ulanovsky, est inspirée par les vieilles enseignes et affiches peintes à la main du quartier traditionnel de Montserrat à Buenos Aires.
-                            </p>
+                            <h3 class="text-xl font-bold mb-4" >À propos de <span class="capitalize">{{ fontName }}</span></h3>
                             <p class="text-gray-400">
-                                Avec ses formes géométriques et ses proportions équilibrées, Montserrat est devenue l'une des polices sans-serif les plus populaires pour le design moderne.
+                                {{ fontAbout }}
                             </p>
                         </div>
                         
                         <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
-                            <h3 class="text-xl font-bold mb-4" style="font-family: 'Montserrat'">Caractéristiques</h3>
+                            <h3 class="text-xl font-bold mb-4" >Caractéristiques</h3>
                             <ul class="space-y-2 text-gray-400">
                                 <li class="flex items-start">
                                     <i class="fas fa-check-circle text-indigo-400 mt-1 mr-2"></i>
-                                    <span>9 épaisseurs différentes (de Thin 100 à Black 900)</span>
+                                    <span>{{ font.weights.length }} épaisseurs différentes</span>
                                 </li>
                                 <li class="flex items-start">
                                     <i class="fas fa-check-circle text-indigo-400 mt-1 mr-2"></i>
-                                    <span>Version italique pour chaque épaisseur</span>
+                                    <span>Version {{ font.styles.join(', ') }}</span>
                                 </li>
                                 <li class="flex items-start">
                                     <i class="fas fa-check-circle text-indigo-400 mt-1 mr-2"></i>
-                                    <span>Support étendu des caractères (Latin Extended)</span>
+                                    <span>Support étendu des caractères {{ font.subsets.join(', ') }}</span>
                                 </li>
                                 <li class="flex items-start">
                                     <i class="fas fa-check-circle text-indigo-400 mt-1 mr-2"></i>
@@ -370,11 +374,11 @@
                     </div>
                     
                     <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-                        <h3 class="text-xl font-bold mb-4" style="font-family: 'Montserrat'">Utilisations recommandées</h3>
+                        <h3 class="text-xl font-bold mb-4" ">Utilisations recommandées</h3>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="bg-gray-700 p-4 rounded-lg">
                                 <div class="flex items-center mb-2">
-                                    <div class="bg-indigo-600 p-2 rounded-full mr-3">
+                                    <div class="bg-indigo-600 p-2 rounded-full mr-3 text-center w-[40px]">
                                         <i class="fas fa-heading text-white"></i>
                                     </div>
                                     <h4 class="font-medium">Titres</h4>
@@ -383,7 +387,7 @@
                             </div>
                             <div class="bg-gray-700 p-4 rounded-lg">
                                 <div class="flex items-center mb-2">
-                                    <div class="bg-indigo-600 p-2 rounded-full mr-3">
+                                    <div class="bg-indigo-600 p-2 rounded-full mr-3 text-center w-[40px]">
                                         <i class="fas fa-paragraph text-white"></i>
                                     </div>
                                     <h4 class="font-medium">Corps de texte</h4>
@@ -392,7 +396,7 @@
                             </div>
                             <div class="bg-gray-700 p-4 rounded-lg">
                                 <div class="flex items-center mb-2">
-                                    <div class="bg-indigo-600 p-2 rounded-full mr-3">
+                                    <div class="bg-indigo-600 p-2 rounded-full mr-3 text-center w-[40px]">
                                         <i class="fas fa-mobile-alt text-white"></i>
                                     </div>
                                     <h4 class="font-medium">Interfaces</h4>
@@ -403,16 +407,21 @@
                     </div>
                     
                     <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
-                        <h3 class="text-xl font-bold mb-4" style="font-family: 'Montserrat'">Licence et téléchargement</h3>
+                        <h3 class="text-xl font-bold mb-4">Licence et téléchargement</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <h4 class="font-medium mb-2">Licence SIL Open Font</h4>
                                 <p class="text-gray-400 mb-4">
-                                    Montserrat est disponible sous la licence Open Font License (OFL) qui permet une utilisation libre, y compris commerciale.
+                                    {{ fontName }} est disponible sous la licence Open Font License (OFL) qui permet une utilisation libre, y compris commerciale.
                                 </p>
-                                <a href="#" class="text-indigo-400 hover:text-indigo-300 flex items-center">
-                                    <i class="fas fa-file-alt mr-2"></i> Voir la licence complète
-                                </a>
+                                <a
+                                :href="fontUrl"
+                                class="text-indigo-400 hover:text-indigo-300 flex items-center"
+                                target="_blank"
+                                rel="noopener"
+                              >
+                                <i class="fas fa-file-alt mr-2"></i> Voir la licence complète
+                              </a>
                             </div>
                             <div>
                                 <h4 class="font-medium mb-2">Téléchargement</h4>
@@ -442,19 +451,72 @@
 </template>
   
 <script setup>
+import { ref, computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { useAsyncData } from '#app'
+
+// === ROUTE & FONT NAME ===
+const route = useRoute()
+const fontName = route.params.font
+
+const formatFontNameForUrl = (name) =>
+  name
+    .split(' ')
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join('+')
+
+const formattedName = formatFontNameForUrl(fontName)
+const fontUrl = `https://fonts.google.com/specimen/${formattedName}/license`
+
+// === FONTS DATA ===
+const { data: fontsData, error: fontsError } = await useAsyncData('font-data', () =>
+  $fetch('/api/desc')
+)
+
+const font = computed(() => {
+  const key = fontName.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+  return fontsData.value?.[key] || null
+})
+
+// === SCRAPED DESCRIPTION ===
+const { data: fontDescriptionData, error: scrapeError } = await useAsyncData(`scrape-${fontName}`, () =>
+  $fetch(`/api/scrape/${fontName}`)
+)
+
+const fontAbout = computed(() =>
+  fontDescriptionData.value?.description || 'Description indisponible.'
+)
+
+// === TABS ===
 const activeTab = ref('specimen')
-
 const tabs = [
-  { name: 'Spécimen', id: 'specimen' },
-  { name: 'Caractères', id: 'glyphs' },
-  { name: 'Associations', id: 'pairing' },
-  { name: 'Informations', id: 'info' }
+  { name: 'Spécimen', short: 'Spec', id: 'specimen' },
+  { name: 'Caractères', short: 'Chars', id: 'glyphs' },
+  { name: 'Associations', short: 'Assoc.', id: 'pairing' },
+  { name: 'Informations', short: 'Info', id: 'info' }
 ]
-import { useRoute } from 'vue-router';
-import { ref, onMounted } from 'vue'
 
-const route = useRoute();
-const fontName = route.params.font;
+// === DEMO CONTROLS ===
+const styledFont = ref(true)
+const demoText = ref('The quick brown fox jumps over the lazy dog')
+const fontSize = ref(24)
+const fontWeight = ref('regular')
+const fontStyle = ref('normal')
+const selectedWeight = ref(100)
+
+const toggleStyledFont = () => styledFont.value = !styledFont.value
+const updateFontSize = (e) => fontSize.value = e.target.value
+const changeFontWeight = (w) => fontWeight.value = w
+const changeFontStyle = (s) => fontStyle.value = s
+const toggleBackgroundWeight = (w) => selectedWeight.value = w
+
+const fontDisplayStyle = computed(() => ({
+  fontFamily: fontName,
+  fontSize: `${fontSize.value}px`,
+  fontWeight: fontWeight.value,
+  fontStyle: fontStyle.value,
+}))
+
 const fontWeights = [
   { name: 'Thin', weight: 100 },
   { name: 'ExtraLight', weight: 200 },
@@ -465,46 +527,13 @@ const fontWeights = [
   { name: 'Bold', weight: 700 },
   { name: 'ExtraBold', weight: 800 },
   { name: 'Black', weight: 900 }
-];
+]
 
-const styledFont = ref(true);
-const demoText = ref("The quick brown fox jumps over the lazy dog");
-const fontSize = ref(24);
-const fontWeight = ref('regular');
-const fontStyle = ref('normal');
-
-const toggleStyledFont = () => {
-    styledFont.value = !styledFont.value;
-}
-
-const updateFontSize = (event) => {
-  fontSize.value = event.target.value; // Mise à jour de fontSize avec la nouvelle valeur
-};
-
-const fontDisplayStyle = computed(() => {
-  return {
-    fontFamily: fontName, 
-    fontSize: `${fontSize.value}px`,
-    fontWeight: fontWeight.value,
-    fontStyle: fontStyle.value,
-  };
-});
-
-  // Code qui sera exécuté côté client après que le composant a été monté
-  const changeFontWeight = (weight) => {
-    fontWeight.value = weight;
-  };
-
-  const changeFontStyle = (style) => {
-    fontStyle.value = style;
-  };
-
-  const selectedWeight = ref(100);
-
-const toggleBackgroundWeight = (weight) => {
-  selectedWeight.value = weight;
-};
+// === DEBUG ===
+if (scrapeError.value) console.error('Erreur scraping:', scrapeError.value)
+if (fontsError.value) console.error('Erreur chargement données:', fontsError.value)
 </script>
+
   
 <style scoped>
         

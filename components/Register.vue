@@ -47,7 +47,7 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between flex-col lg:flex-row">
                         <div class="flex items-center">
                             <input id="remember-me" name="remember-me" type="checkbox"
                                 class="h-4 w-4 bg-gray-700 rounded border-gray-600 text-indigo-600 focus:ring-indigo-500">
