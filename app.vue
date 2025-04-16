@@ -7,9 +7,35 @@
 </template>
 
 <script setup>
-// tu peux aussi définir des choses globales ici
-</script>
 
+useHead({
+  script: [
+    {
+      id: 'Cookiebot',
+      src: 'https://consent.cookiebot.com/uc.js',
+      async: true,
+      'data-cbid': '0b547a09-5eb2-4120-8f07-c6719f56ca11',
+      type: 'text/javascript'
+    },
+    {
+      type: 'text/plain',
+      'data-cookieconsent': 'statistics',
+      async: true,
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX'
+    },
+    {
+      type: 'text/plain',
+      'data-cookieconsent': 'statistics',
+      children: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8K600SK026');
+      `
+    }
+  ]
+})
+</script>
 <style>
 body {
   font-family: 'Inter', sans-serif;
