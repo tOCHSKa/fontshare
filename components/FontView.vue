@@ -470,7 +470,7 @@ const fontUrl = `https://fonts.google.com/specimen/${formattedName}/license`
 
 // === FONTS DATA ===
 const { data: fontsData, error: fontsError } = await useAsyncData('font-data', () =>
-  $fetch('/api/desc')
+  $fetch('https://fontshare.netlify.app/newdesc.json')
 )
 
 const font = computed(() => {
@@ -478,17 +478,8 @@ const font = computed(() => {
   return fontsData.value?.[key] || null
 })
 
-// === SCRAPED DESCRIPTION ===
-// const { data: fontDescriptionData, error: scrapeError } = await useAsyncData(`scrape-${fontName}`, () =>
-//   $fetch(`/api/scrape/${fontName}`)
-// )
-
-// const fontAbout = computed(() =>
-//   fontDescriptionData.value?.description || 'Description indisponible.'
-// )
-
 const { data: fontDescriptionData } = await useAsyncData('font-description', () =>
-  $fetch('/api/fontdesc')
+  $fetch('https://fontshare.netlify.app/fonts-with-desc.json')
 )
 
 const fontDescription = computed(() => {
