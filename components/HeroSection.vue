@@ -60,7 +60,7 @@ watch(searchQuery, debounce((val) => {
 
 // Récupération des données
 const { data: fontsData, error: fontsError } = await useAsyncData('font-data', () =>
-  $fetch('/api/desc')
+    $fetch('/fonts-with-desc.json')
 )
 
 if (fontsData.value) {
