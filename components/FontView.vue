@@ -106,14 +106,14 @@
                     :class="{ 'active border-b-2 border-white text-white': activeTab === tab.id, 'text-gray-400': activeTab !== tab.id }"
                     @click="activeTab = tab.id"
                     >
-                    <span>{{ tab.name }}</span>
+                    <span class="cursor-pointer">{{ tab.name }}</span>
                     </button>
                 </div>
   
             </div>
             <!-- Tab Panels -->
             <div id="tab-content">
-                <div v-show="activeTab === 'specimen'" id="specimen-tab" class="tab-panel">
+                <div v-show="activeTab === 'specimen'" id="specimen-tab" class="tab-panel ">
                 <!-- TON CONTENU DU SPÉCIMEN ICI -->
                     <h2 class="text-2xl font-bold mb-6">Spécimen de la police</h2>
                     <div class="font-variants-grid mb-8">
@@ -346,7 +346,7 @@
                         <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
                             <h3 class="text-xl font-bold mb-4" >À propos de <span class="capitalize">{{ fontName }}</span></h3>
                             <p class="text-gray-400">
-                                {{ fontAbout }}
+                                {{ fontDescription  }}
                             </p>
                         </div>
                         
@@ -479,13 +479,23 @@ const font = computed(() => {
 })
 
 // === SCRAPED DESCRIPTION ===
-const { data: fontDescriptionData, error: scrapeError } = await useAsyncData(`scrape-${fontName}`, () =>
-  $fetch(`/api/scrape/${fontName}`)
+// const { data: fontDescriptionData, error: scrapeError } = await useAsyncData(`scrape-${fontName}`, () =>
+//   $fetch(`/api/scrape/${fontName}`)
+// )
+
+// const fontAbout = computed(() =>
+//   fontDescriptionData.value?.description || 'Description indisponible.'
+// )
+
+const { data: fontDescriptionData } = await useAsyncData('font-description', () =>
+  $fetch('/api/fontdesc')
 )
 
-const fontAbout = computed(() =>
-  fontDescriptionData.value?.description || 'Description indisponible.'
-)
+const fontDescription = computed(() => {
+  const key = fontName.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  return fontDescriptionData.value?.find(f => f.family === key)?.description || 'Description indisponible';
+});
+
 
 // === TABS ===
 const activeTab = ref('specimen')
@@ -530,7 +540,6 @@ const fontWeights = [
 ]
 
 // === DEBUG ===
-if (scrapeError.value) console.error('Erreur scraping:', scrapeError.value)
 if (fontsError.value) console.error('Erreur chargement données:', fontsError.value)
 </script>
 

@@ -12,11 +12,29 @@
         </p>
 
         <div class="max-w-2xl mx-auto relative">
-            <input type="text" placeholder="Rechercher une police..."
+            <input type="text" placeholder="Rechercher une police..." v-model="searchQuery"
                 class="w-full py-4 px-6 rounded-full bg-gray-700 border border-gray-600 focus:border-indigo-500 text-white placeholder-gray-400 search-input pr-16">
             <button class="absolute right-2 top-2 bg-indigo-600 hover:bg-indigo-700 p-2 rounded-full transition w-[40px]">
                 <i class="fas fa-search"></i>
             </button>
+            <ul
+            v-show="filteredFonts.length > 0"
+            class="mt-4 bg-gray-800 border border-gray-700 rounded-lg shadow-lg max-h-60 overflow-y-auto divide-y divide-gray-700"
+          >
+            <li
+              v-for="font in filteredFonts"
+              :key="font"
+              class="px-4 py-3 text-left hover:bg-indigo-600 transition-colors cursor-pointer"
+              :style="{ fontFamily: font }"
+            >
+              <a
+                :href="`/${font}`"
+                class="text-white hover:text-white w-full block"
+              >
+                {{ font }}
+            </a>
+            </li>
+          </ul>
         </div>
 
         <div class="mt-8 flex justify-center space-x-4">
@@ -29,8 +47,40 @@
 </section>
 </template>
 <script setup>
+import { debounce } from 'lodash-es'
 
+const fontArray = ref([])
+const searchQuery = ref('')
+const debouncedQuery = ref('')
+
+// Debounce la recherche (300ms)
+watch(searchQuery, debounce((val) => {
+  debouncedQuery.value = val
+}, 300))
+
+// Récupération des données
+const { data: fontsData, error: fontsError } = await useAsyncData('font-data', () =>
+  $fetch('/api/desc')
+)
+
+if (fontsData.value) {
+  const allFonts = Object.values(fontsData.value)
+  fontArray.value = allFonts
+    .map(font => font.family)
+    .sort() // tri alphabétique (optionnel mais sympa)
+}
+
+// Computed qui filtre et limite à 50 résultats
+const filteredFonts = computed(() => {
+  if (!debouncedQuery.value.trim()) return []
+    console.log(fontArray.value)
+  return fontArray.value
+    .filter(family =>
+      family.toLowerCase().includes(debouncedQuery.value)
+    )
+})
 </script>
+
 <style lang="scss" scoped>
 .gradient-text {
     margin: 0;
@@ -53,4 +103,19 @@
         background-position: 0% 50%;
     }
 } 
+
+ul {
+    scrollbar-width: thin;
+    scrollbar-color: #6b7280 transparent;
+  
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background-color: #6b7280;
+      border-radius: 9999px;
+    }
+  }
+  
 </style>

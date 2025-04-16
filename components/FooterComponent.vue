@@ -66,7 +66,7 @@
 
             <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-400 text-sm">
-                    © 2023 FontShare. Tous droits réservés.
+                    © 2025 FontShare. Tous droits réservés.
                 </p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
                     <a href="#" class="text-gray-400 hover:text-indigo-300 text-sm transition">Conditions
