@@ -81,7 +81,63 @@
         id="font-display" :style="fontDisplayStyle">
         {{ demoText }}
       </div>
+      <h2 class="text-2xl font-bold mb-6">Récupérer le code</h2>
+      <!-- Checkboxes des weights -->
+        <div class="mb-6 flex flex-wrap gap-4">
+            <div
+            v-for="weight in font.weights"
+            :key="weight"
+            class="flex items-center space-x-2 text-gray-300"
+            >
+            <input
+                type="checkbox"
+                :id="`weight-${weight}`"
+                :value="weight"
+                v-model="selectedWeights"
+                class="form-checkbox text-indigo-500 bg-gray-700 border-gray-600 rounded focus:ring-indigo-400"
+            />
+            <label :for="`weight-${weight}`" class="cursor-pointer">
+                {{ weight }}
+            </label>
+            </div>
+        </div>
   
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold">CDN de Google</h3>
+                        <button @click="copyToClipboard(googleCdnLink, 'google')" 
+                        class="flex justify-between items-center text-gray-400 hover:text-white gap-2">
+                           <p class="text-white">
+                            {{ textCopyGoogle }}
+                           </p> 
+                          <i class="fas fa-copy text-xl cursor-pointer"></i>
+                        </button>
+                      </div>
+                <textarea
+                class="w-full h-40 bg-gray-900 text-gray-300 p-4 rounded-lg border border-gray-600 resize-none"
+                readonly
+                :value="googleCdnLink"
+              />
+                </div>
+            
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold">CDN de FontShare</h3>
+                        <button @click="copyToClipboard(fontShareCdnLink, 'fontshare')" 
+                            class="flex justify-between items-center text-gray-400 hover:text-white gap-2">
+                           <p class="text-white">
+                            {{ textCopyFontShare }}
+                           </p> 
+                          <i class="fas fa-copy text-xl cursor-pointer"></i>
+                        </button>
+                      </div>
+                <textarea
+                    class="w-full h-40 bg-gray-900 text-gray-300 p-4 rounded-lg border border-gray-600 resize-none"
+                    readonly
+                ></textarea>
+                </div>
+            </div>
             <div class="border-b border-gray-700 mb-6">
                 <!-- Mobile : noms courts -->
                 <div class="flex justify-evenly space-x-4 sm:hidden">
@@ -458,6 +514,37 @@ import { useAsyncData } from '#app'
 // === ROUTE & FONT NAME ===
 const route = useRoute()
 const fontName = route.params.font
+const selectedWeights = ref([])
+const textCopyFontShare = ref('')
+const textCopyGoogle= ref('')
+const googleCdnLink = computed(() => {
+  if (!font.value || selectedWeights.value.length === 0) return ''
+
+  const family = font.value.family.replace(/ /g, '+')
+  const weights = [...selectedWeights.value].sort((a, b) => Number(a) - Number(b)).join(';')
+
+  return `<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=${family}:wght@${weights}&display=swap" rel="stylesheet">`
+})
+
+
+const copyToClipboard = async (value, type) => {
+  try {
+    await navigator.clipboard.writeText(value)
+
+    if (type === 'google') {
+      textCopyGoogle.value = 'Copié !'
+      setTimeout(() => (textCopyGoogle.value = 'Copier'), 2000)
+    } else if (type === 'fontshare') {
+      textCopyFontShare.value = 'Copié !'
+      setTimeout(() => (textCopyFontShare.value = 'Copier'), 2000)
+    }
+  } catch (err) {
+    console.error('Erreur de copie :', err)
+  }
+}
+
 
 const formatFontNameForUrl = (name) =>
   name
@@ -467,6 +554,10 @@ const formatFontNameForUrl = (name) =>
 
 const formattedName = formatFontNameForUrl(fontName)
 const fontUrl = `https://fonts.google.com/specimen/${formattedName}/license`
+
+
+const ip = ref('https://fontshare.netlify.app');
+
 
 // === FONTS DATA ===
 const { data: fontsData, error: fontsError } = await useAsyncData('font-data', () =>

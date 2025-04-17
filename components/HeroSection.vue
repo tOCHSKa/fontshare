@@ -12,7 +12,7 @@
         </p>
 
         <div class="max-w-2xl mx-auto relative">
-            <input type="text" placeholder="Rechercher une police..." v-model="searchQuery"
+            <input type="text" placeholder="Rechercher une police..." v-model="searchQuery"  @keydown.down.prevent="focusFirst" ref="searchInput"
                 class="w-full py-4 px-6 rounded-full bg-gray-700 border border-gray-600 focus:border-indigo-500 text-white placeholder-gray-400 search-input pr-16">
             <button class="absolute right-2 top-2 bg-indigo-600 hover:bg-indigo-700 p-2 rounded-full transition w-[40px]">
                 <i class="fas fa-search"></i>
@@ -22,9 +22,13 @@
             class="mt-4 bg-gray-800 border border-gray-700 rounded-lg shadow-lg max-h-60 overflow-y-auto divide-y divide-gray-700"
           >
             <li
-              v-for="font in filteredFonts"
+              v-for="(font, index) in filteredFonts"
               :key="font"
-              class="px-4 py-3 text-left hover:bg-indigo-600 transition-colors cursor-pointer"
+              :tabindex="0"
+              @keydown.down.prevent="focusNext(index)"
+              @keydown.up.prevent="focusPrev(index)"
+              @keydown.enter.prevent="goToFont(font)"
+              class="px-4 py-3 text-left hover:bg-indigo-600 transition-colors cursor-pointer focus:bg-indigo-600"
               :style="{ fontFamily: font }"
             >
               <a
@@ -32,9 +36,10 @@
                 class="text-white hover:text-white w-full block"
               >
                 {{ font }}
-            </a>
+              </a>
             </li>
           </ul>
+          
         </div>
 
         <div class="mt-8 flex justify-center space-x-4">
@@ -62,6 +67,7 @@ watch(searchQuery, debounce((val) => {
 const { data: fontsData, error: fontsError } = await useAsyncData('font-data', () =>
     $fetch('https://fontshare.netlify.app/fonts-with-desc.json')
 )
+const ip = ref('https://fontshare.netlify.app');
 
 if (fontsData.value) {
   const allFonts = Object.values(fontsData.value)
@@ -77,8 +83,41 @@ const filteredFonts = computed(() => {
   return fontArray.value
     .filter(family =>
       family.toLowerCase().includes(debouncedQuery.value)
-    )
+    ).slice(0, 50)
 })
+
+const searchInput = ref(null)
+
+const focusFirst = () => {
+  const items = document.querySelectorAll('[tabindex="0"]')
+  if (items.length) {
+    items[0].focus()
+  }
+}
+
+const focusNext = (currentIndex) => {
+  const items = document.querySelectorAll('[tabindex="0"]')
+  if (currentIndex + 1 < items.length) {
+    items[currentIndex + 1].focus()
+  }
+}
+
+const focusPrev = (currentIndex) => {
+  const items = document.querySelectorAll('[tabindex="0"]')
+  if (currentIndex - 1 >= 0) {
+    items[currentIndex - 1].focus()
+  } else {
+    // remonter dans l'input si flèche haut au tout début
+    searchInput.value?.focus()
+  }
+}
+
+const router = useRouter()
+
+const goToFont = (font) => {
+  window.location.href = `/${font}`
+}
+
 </script>
 
 <style lang="scss" scoped>
@@ -116,6 +155,10 @@ ul {
       background-color: #6b7280;
       border-radius: 9999px;
     }
+  }
+  li:focus {
+    outline: none;
+    background-color: #4f46e5; /* indigo-600 */
   }
   
 </style>
