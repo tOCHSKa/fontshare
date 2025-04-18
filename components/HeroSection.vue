@@ -82,7 +82,7 @@ const filteredFonts = computed(() => {
     console.log(fontArray.value)
   return fontArray.value
     .filter(family =>
-      family.toLowerCase().includes(debouncedQuery.value)
+      family.toLowerCase().includes(debouncedQuery.value.toLowerCase())
     ).slice(0, 50)
 })
 
