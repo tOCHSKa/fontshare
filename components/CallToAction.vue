@@ -7,11 +7,11 @@
             </p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
                 <button
-                    class="bg-white text-indigo-800 hover:bg-gray-100 px-8 py-4 rounded-md font-bold text-lg transition">
+                    class="cursor-pointer border-2 border-white bg-white text-indigo-800 hover:bg-indigo-800 hover:border-indigo-800 hover:bg-opacity-10 hover:text-white px-8 py-4 rounded-md font-bold text-lg transition">
                     S'inscrire gratuitement
                 </button>
                 <button
-                    class="border-2 border-white text-white hover:bg-white hover:text-indigo-800 hover:border-indigo-800
+                    class="cursor-pointer border-2 border-white text-white hover:bg-white hover:text-indigo-800 hover:border-indigo-800
                     hover:bg-opacity-10 px-8 py-4 rounded-md font-bold text-lg transition">
                     Voir les polices
                 </button>

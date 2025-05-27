@@ -12,16 +12,10 @@
                         La plateforme ultime pour découvrir et partager des polices typographiques uniques.
                     </p>
                     <div class="flex space-x-4 mt-6">
-                        <a href="#" class="text-gray-400 hover:text-indigo-400 transition">
-                            <i class="fab fa-twitter"></i>
+                        <a href="https://www.linkedin.com/in/kevin-ubeda-400045292/" target="_blank" class="text-gray-400 hover:text-indigo-400 transition">
+                            <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-indigo-400 transition">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-indigo-400 transition">
-                            <i class="fab fa-dribbble"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-indigo-400 transition">
+                        <a href="https://github.com/tOCHSKa" target="_blank" class="text-gray-400 hover:text-indigo-400 transition">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>

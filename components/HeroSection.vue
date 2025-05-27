@@ -14,7 +14,7 @@
         <div class="max-w-2xl mx-auto relative">
             <input type="text" placeholder="Rechercher une police..." v-model="searchQuery"  @keydown.down.prevent="focusFirst" ref="searchInput"
                 class="w-full py-4 px-6 rounded-full bg-gray-700 border border-gray-600 focus:border-indigo-500 text-white placeholder-gray-400 search-input pr-16">
-            <button class="absolute right-2 top-2 bg-indigo-600 hover:bg-indigo-700 p-2 rounded-full transition w-[40px]">
+            <button class="cursor-pointer absolute right-2 top-2 bg-indigo-600 hover:bg-indigo-700 p-2 rounded-full transition w-[40px]">
                 <i class="fas fa-search"></i>
             </button>
             <ul
@@ -67,13 +67,12 @@ watch(searchQuery, debounce((val) => {
 const { data: fontsData, error: fontsError } = await useAsyncData('font-data', () =>
     $fetch('https://fontshare.netlify.app/fonts-with-desc.json')
 )
-const ip = ref('https://fontshare.netlify.app');
 
 if (fontsData.value) {
   const allFonts = Object.values(fontsData.value)
   fontArray.value = allFonts
     .map(font => font.family)
-    .sort() // tri alphabétique (optionnel mais sympa)
+    .sort() // tri alphabétique
 }
 
 // Computed qui filtre et limite à 50 résultats
@@ -111,12 +110,15 @@ const focusPrev = (currentIndex) => {
     searchInput.value?.focus()
   }
 }
-
-const router = useRouter()
+const navigateTo = (path) => {
+  window.location.href = path;
+}
 
 const goToFont = (font) => {
-  window.location.href = `/${font}`
+navigateTo(`/${font}`);
 }
+
+
 
 </script>
 

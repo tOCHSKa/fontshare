@@ -18,7 +18,8 @@
           <div class="flex items-center space-x-4">
             <NuxtLink
             to="/register"
-            class="cursor-pointer bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md font-medium transition"
+            class="cursor-pointer bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md font-medium transition-all
+            hover:scale-105 duration-300"
           >
             Connexion
           </NuxtLink>
@@ -32,10 +33,7 @@
 </template>
   
 <script setup>
-  
-import { useRouter } from 'vue-router';
-
-const router = useRouter();
+import { navigateTo } from '#app';
 
 const redirectToRegister = () => {
     navigateTo("/register");
@@ -44,9 +42,8 @@ const redirectToRegister = () => {
 const redirectToHome = () => {
     navigateTo('/');
 };
-  </script>
+</script>
   
-  <style scoped lang="scss">
+<style scoped lang="scss">
   
-  </style>
-  
+</style>

@@ -11,7 +11,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Font Card 1 -->
                 <div
-                    class="font-card bg-gray-800 rounded-xl p-6 border border-gray-700 transition duration-300 hover:border-indigo-500">
+                    class="font-card cursor-pointer bg-gray-800 rounded-xl p-6 border border-gray-700 transition duration-300 hover:border-indigo-500">
                     <div class="flex justify-between items-start mb-4">
                         <h3 class="text-2xl font-bold" style="font-family: 'Montserrat'">Montserrat</h3>
                         <div class="flex space-x-2">
@@ -42,7 +42,7 @@
 
                 <!-- Font Card 2 -->
                 <div
-                    class="font-card bg-gray-800 rounded-xl p-6 border border-gray-700 transition duration-300 hover:border-indigo-500">
+                    class="font-card cursor-pointer bg-gray-800 rounded-xl p-6 border border-gray-700 transition duration-300 hover:border-indigo-500">
                     <div class="flex justify-between items-start mb-4">
                         <h3 class="text-2xl font-bold" style="font-family: 'Poppins'">Poppins</h3>
                         <div class="flex space-x-2">
@@ -74,7 +74,7 @@
 
                 <!-- Font Card 3 -->
                 <div
-                    class="font-card bg-gray-800 rounded-xl p-6 border border-gray-700 transition duration-300 hover:border-indigo-500">
+                    class="font-card cursor-pointer bg-gray-800 rounded-xl p-6 border border-gray-700 transition duration-300 hover:border-indigo-500">
                     <div class="flex justify-between items-start mb-4">
                         <h3 class="text-2xl font-bold" style="font-family: 'Playfair Display'">Playfair Display</h3>
                         <div class="flex space-x-2">

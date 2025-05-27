@@ -19,7 +19,8 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
     '@nuxt/test-utils',
-    '@nuxt/ui'
+    '@nuxt/ui',
+    '@pinia/nuxt',
   ],
   css: ['~/assets/css/main.css', '~/assets/css/google-fonts.css'],
   vite: {
