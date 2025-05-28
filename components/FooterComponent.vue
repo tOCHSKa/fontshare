@@ -63,7 +63,7 @@
                     <div class="flex">
                         <input type="email" placeholder="Votre email"
                             class="py-2 px-4 bg-gray-700 text-white rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full">
-                        <button aria-label="Envoyer" class="bg-indigo-600 hover:bg-indigo-700 px-4 rounded-r-md transition">
+                        <button aria-label="Envoyer" class="cursor-pointer bg-indigo-600 hover:bg-indigo-700 px-4 rounded-r-md transition">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>

@@ -9,10 +9,10 @@
           </NuxtLink>
           
           <div class="hidden md:flex space-x-6">
-              <a href="#" class="hover:text-indigo-300 transition">Explorer</a>
-              <a href="#" class="hover:text-indigo-300 transition">Tendances</a>
-              <a href="#" class="hover:text-indigo-300 transition">Collections</a>
-              <a href="#" class="hover:text-indigo-300 transition">À propos</a>
+              <NuxtLink to="/explorer" class="hover:text-indigo-300 transition">Explorer</NuxtLink>
+              <NuxtLink to="/trends" class="hover:text-indigo-300 transition">Tendances</NuxtLink>
+              <NuxtLink to="/collections" class="hover:text-indigo-300 transition">Collections</NuxtLink>
+              <NuxtLink to="/about" class="hover:text-indigo-300 transition">À propos</NuxtLink>
           </div>
   
           <div class="flex items-center space-x-4">
@@ -33,15 +33,7 @@
 </template>
   
 <script setup>
-import { navigateTo } from '#app';
 
-const redirectToRegister = () => {
-    navigateTo("/register");
-};
-
-const redirectToHome = () => {
-    navigateTo('/');
-};
 </script>
   
 <style scoped lang="scss">

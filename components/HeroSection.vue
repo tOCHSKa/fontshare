@@ -31,12 +31,12 @@
               class="px-4 py-3 text-left hover:bg-indigo-600 transition-colors cursor-pointer focus:bg-indigo-600"
               :style="{ fontFamily: font }"
             >
-              <a
-                :href="`/${font}`"
+              <NuxtLink
+                :to="`/${font}`"
                 class="text-white hover:text-white w-full block"
               >
                 {{ font }}
-              </a>
+              </NuxtLink>
             </li>
           </ul>
           
