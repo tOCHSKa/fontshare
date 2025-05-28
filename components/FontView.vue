@@ -123,7 +123,7 @@
             
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
                     <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-bold">CDN de FontShare</h3>
+                        <h3 class="text-xl font-bold">CDN de OpenFontsHub</h3>
                         <button aria-label="Copier le code" @click="copyToClipboard(fontShareCdnLink, 'fontshare')" 
                             class="flex justify-between items-center text-gray-400 hover:text-white gap-2">
                            <p class="text-white">

@@ -6,7 +6,7 @@
                     <div class="flex items-center space-x-2 mb-4">
                         <i class="fas fa-font text-2xl text-indigo-400"></i>
                         <span
-                            class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-purple-500 gradient-text-filled">FontShare</span>
+                            class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-purple-500 gradient-text-filled">OpenFontsHub</span>
                     </div>
                     <p class="text-gray-400">
                         La plateforme ultime pour découvrir et partager des polices typographiques uniques.
@@ -60,7 +60,7 @@
 
             <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-400 text-sm">
-                    © 2025 FontShare. Tous droits réservés.
+                    © 2025 OpenFontsHub. Tous droits réservés.
                 </p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
                     <NuxtLink to="/terms" class="text-gray-400 hover:text-indigo-300 text-sm transition">Conditions

@@ -8,12 +8,6 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'fr',
       },
-      link: [
-        {
-          rel: 'stylesheet',
-          href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-        },
-      ],
     },
   },
   modules: [
@@ -25,7 +19,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@pinia/nuxt',
   ],
-  css: ['~/assets/css/main.css', '~/assets/css/google-fonts.css'],
+  css: ['~/assets/css/main.css', '~/assets/css/google-fonts.css', '~/node_modules/@fortawesome/fontawesome-free/css/all.min.css'],
   vite: {
     plugins: [
       tailwindcss(),

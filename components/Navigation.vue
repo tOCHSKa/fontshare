@@ -4,7 +4,7 @@
         <NuxtLink to="/" class="flex items-center space-x-2">
             <i class="fas fa-font text-2xl text-indigo-400"></i>
             <span class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-purple-500 gradient-text-filled">
-              FontShare
+              OpenFontsHub
             </span>
           </NuxtLink>
           

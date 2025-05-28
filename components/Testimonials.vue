@@ -3,7 +3,7 @@
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl font-bold mb-2">Ce que disent nos utilisateurs</h2>
             <p class="text-gray-400 mb-10 max-w-2xl">Rejoignez des milliers de designers et développeurs qui utilisent
-                FontShare quotidiennement</p>
+                OpenFontsHub quotidiennement</p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <p class="text-gray-300">
-                        "FontShare a révolutionné ma façon de trouver des polices. La variété est incroyable et le
+                        "OpenFontsHub a révolutionné ma façon de trouver des polices. La variété est incroyable et le
                         système de recommandation est très précis."
                     </p>
                     <div class="mt-4 flex space-x-1 text-yellow-400">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <p class="text-gray-300">
-                        "En tant que développeur, trouver la bonne police peut être difficile. FontShare rend ce
+                        "En tant que développeur, trouver la bonne police peut être difficile. OpenFontsHub rend ce
                         processus simple et agréable."
                     </p>
                     <div class="mt-4 flex space-x-1 text-yellow-400">
