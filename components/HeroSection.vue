@@ -31,12 +31,12 @@
               class="px-4 py-3 text-left hover:bg-indigo-600 transition-colors cursor-pointer focus:bg-indigo-600"
               :style="{ fontFamily: font }"
             >
-              <NuxtLink
-                :to="`/${font}`"
+              <a
+                :href="`/font/${font}`"
                 class="text-white hover:text-white w-full block"
               >
                 {{ font }}
-              </NuxtLink>
+              </a>
             </li>
           </ul>
           
@@ -115,7 +115,7 @@ const navigateTo = (path) => {
 }
 
 const goToFont = (font) => {
-navigateTo(`/${font}`);
+navigateTo(`/font/${font}`);
 }
 
 
