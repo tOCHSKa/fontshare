@@ -53,7 +53,7 @@
             <!-- Font List -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
                 <div v-for="font in paginatedFonts" :key="font.id"
-                    class="font-card bg-gray-800 rounded-xl p-6 border border-gray-700 transition duration-300 hover:border-indigo-500">
+                    class="cursor-pointer bg-gray-800 rounded-xl p-6 border border-gray-700 transition duration-300 hover:border-indigo-500">
                     <div class="flex justify-between items-start mb-4">
                         <h3 class="text-2xl font-bold" :style="{ fontFamily: font.family }">{{ font.family }}</h3>
                         <div class="flex space-x-2">
@@ -72,9 +72,11 @@
                     </div>
                     <div class="flex justify-between items-center">
                         <div class="flex items-center space-x-2">
-                            <span class="text-sm cursor-pointer">
-                                <NuxtLink :to="`/${font.family}`">Voir en détail</NuxtLink>
-                            </span>
+                            <a :href="`/font/${font.family}`"
+                            class="text-sm text-indigo-400 hover:underline cursor-pointer"
+                            >
+                            Voir en détail
+                            </a>
                         </div>
                         <div class="flex space-x-3">
                             <button aria-label="Favoris" class="text-gray-400 hover:text-indigo-400 transition">
@@ -117,8 +119,7 @@
                     <i class="fas fa-chevron-right"></i>
                     </button>
                 </nav>
-                </div>
-
+            </div>
         </div>
     </main>
 </template>
@@ -240,6 +241,16 @@ const visiblePages = computed(() => {
 
   return pages
 })
+
+/**
+ * Navigue vers la page de la police sélectionnée.
+ * @param {string} fontName - Nom de la police à afficher.
+ */
+
+
+const goToFont = (font) => {
+navigateTo(`/font/${font}`);
+}
 
 /**
  * Filtre les polices par catégorie.
