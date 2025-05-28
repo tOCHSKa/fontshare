@@ -14,7 +14,7 @@
         <div class="max-w-2xl mx-auto relative">
             <input type="text" placeholder="Rechercher une police..." v-model="searchQuery"  @keydown.down.prevent="focusFirst" ref="searchInput"
                 class="w-full py-4 px-6 rounded-full bg-gray-700 border border-gray-600 focus:border-indigo-500 text-white placeholder-gray-400 search-input pr-16">
-            <button class="cursor-pointer absolute right-2 top-2 bg-indigo-600 hover:bg-indigo-700 p-2 rounded-full transition w-[40px]">
+            <button aria-label="Rechercher" class="cursor-pointer absolute right-2 top-2 bg-indigo-600 hover:bg-indigo-700 p-2 rounded-full transition w-[40px]">
                 <i class="fas fa-search"></i>
             </button>
             <ul

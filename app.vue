@@ -9,6 +9,13 @@
 <script setup>
 
 useHead({
+  title: 'FontShare – Polices modernes gratuites',
+  meta: [
+    {
+      name: 'description',
+      content: 'FontShare est un site de polices gratuites et modernes. Explorez notre collection de polices sans publicité et sans publicité.'
+    }
+  ],
   script: [
     {
       id: 'Cookiebot',

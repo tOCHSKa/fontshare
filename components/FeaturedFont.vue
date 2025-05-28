@@ -30,10 +30,10 @@
                             <span class="text-sm">Julieta Ulanovsky</span>
                         </div>
                         <div class="flex space-x-3">
-                            <button class="text-gray-400 hover:text-indigo-400 transition">
+                            <button aria-label="Ajouter aux favoris" class="text-gray-400 hover:text-indigo-400 transition">
                                 <i class="far fa-heart"></i> 245
                             </button>
-                            <button class="text-gray-400 hover:text-indigo-400 transition">
+                            <button aria-label="Télécharger" class="text-gray-400 hover:text-indigo-400 transition">
                                 <i class="fas fa-download"></i>
                             </button>
                         </div>
@@ -62,10 +62,10 @@
                             <span class="text-sm">Indian Type Foundry</span>
                         </div>
                         <div class="flex space-x-3">
-                            <button class="text-gray-400 hover:text-indigo-400 transition">
+                            <button aria-label="Ajouter aux favoris" class="text-gray-400 hover:text-indigo-400 transition">
                                 <i class="far fa-heart"></i> 189
                             </button>
-                            <button class="text-gray-400 hover:text-indigo-400 transition">
+                            <button aria-label="Télécharger" class="text-gray-400 hover:text-indigo-400 transition">
                                 <i class="fas fa-download"></i>
                             </button>
                         </div>
@@ -93,10 +93,10 @@
                             <span class="text-sm">Claus Eggers Sørensen</span>
                         </div>
                         <div class="flex space-x-3">
-                            <button class="text-gray-400 hover:text-indigo-400 transition">
+                            <button aria-label="Ajouter aux favoris" class="text-gray-400 hover:text-indigo-400 transition">
                                 <i class="far fa-heart"></i> 312
                             </button>
-                            <button class="text-gray-400 hover:text-indigo-400 transition">
+                            <button aria-label="Télécharger" class="text-gray-400 hover:text-indigo-400 transition">
                                 <i class="fas fa-download"></i>
                             </button>
                         </div>

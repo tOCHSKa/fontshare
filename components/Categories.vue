@@ -9,7 +9,7 @@
                         <i class="fas fa-bold text-2xl"></i>
                     </div>
                     <h3 class="font-medium">Sans-serif</h3>
-                    <p class="text-sm text-gray-400 mt-1">1,245 polices</p>
+                    <p class="text-sm text-gray-100 mt-1">1,245 polices</p>
                 </a>
 
                 <a href="#" class="bg-gray-700 hover:bg-gray-600 rounded-lg p-6 transition flex flex-col items-center">
@@ -17,7 +17,7 @@
                         <i class="fas fa-text-height text-2xl"></i>
                     </div>
                     <h3 class="font-medium">Serif</h3>
-                    <p class="text-sm text-gray-400 mt-1">876 polices</p>
+                    <p class="text-sm text-gray-100 mt-1">876 polices</p>
                 </a>
 
                 <a href="#" class="bg-gray-700 hover:bg-gray-600 rounded-lg p-6 transition flex flex-col items-center">
@@ -25,7 +25,7 @@
                         <i class="fas fa-pen-fancy text-2xl"></i>
                     </div>
                     <h3 class="font-medium">Display</h3>
-                    <p class="text-sm text-gray-400 mt-1">542 polices</p>
+                    <p class="text-sm text-gray-100 mt-1">542 polices</p>
                 </a>
 
                 <a href="#" class="bg-gray-700 hover:bg-gray-600 rounded-lg p-6 transition flex flex-col items-center">
@@ -33,7 +33,7 @@
                         <i class="fas fa-keyboard text-2xl"></i>
                     </div>
                     <h3 class="font-medium">Monospace</h3>
-                    <p class="text-sm text-gray-400 mt-1">321 polices</p>
+                    <p class="text-sm text-gray-100 mt-1">321 polices</p>
                 </a>
 
                 <a href="#" class="bg-gray-700 hover:bg-gray-600 rounded-lg p-6 transition flex flex-col items-center">
@@ -41,7 +41,7 @@
                         <i class="fas fa-hand-sparkles text-2xl"></i>
                     </div>
                     <h3 class="font-medium">Script</h3>
-                    <p class="text-sm text-gray-400 mt-1">298 polices</p>
+                    <p class="text-sm text-gray-100 mt-1">298 polices</p>
                 </a>
             </div>
         </div>

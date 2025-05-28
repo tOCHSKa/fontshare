@@ -24,7 +24,7 @@
             Connexion
           </NuxtLink>
           
-              <button class="p-2 rounded-full bg-gray-700 hover:bg-gray-600 transition cursor-pointer">
+              <button aria-label="Mode sombre" class="p-2 rounded-full bg-gray-700 hover:bg-gray-600 transition cursor-pointer">
                   <i class="fas fa-moon w-[24px]"></i>
               </button>
           </div>

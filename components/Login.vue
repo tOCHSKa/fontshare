@@ -38,7 +38,7 @@
                                     class="input-field appearance-none block w-full px-10 py-3 border border-gray-700 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                                     placeholder="Mot de passe">
                                 <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-                                    <button type="button" @click="togglePasswordVisibility"
+                                    <button aria-label="Afficher/Masquer le mot de passe" type="button" @click="togglePasswordVisibility"
                                         class="text-gray-400 hover:text-indigo-400">
                                         <i class="fas" :class="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
                                     </button>
@@ -64,7 +64,7 @@
                     </div>
 
                     <div>
-                        <button type="submit" @click="handleSubmit"
+                        <button aria-label="Se connecter" type="submit" @click="handleSubmit"
                             class="group cursor-pointer relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition">
                             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                 <i class="fas fa-sign-in-alt text-indigo-300 group-hover:text-indigo-200"></i>
@@ -85,17 +85,17 @@
                     </div>
 
                     <div class="grid grid-cols-3 gap-3">
-                        <button type="button"
+                        <button aria-label="Se connecter avec Google" type="button"
                             class="relative w-full inline-flex justify-center py-2 px-4 border border-gray-700 rounded-md shadow-sm bg-gray-700 text-sm font-medium text-white hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition group">
                             <i class="fab fa-google text-red-400 group-hover:opacity-20"></i>
                             <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100">Non disponible</span>
                         </button>
-                        <button type="button"
+                        <button aria-label="Se connecter avec GitHub" type="button"
                             class="relative w-full inline-flex justify-center py-2 px-4 border border-gray-700 rounded-md shadow-sm bg-gray-700 text-sm font-medium text-white hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition group">
                             <i class="fab fa-github text-gray-400 group-hover:opacity-20"></i>
                             <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100">Non disponible</span>
                         </button>
-                        <button type="button"
+                        <button aria-label="Se connecter avec Twitter"  type="button"
                             class="relative w-full inline-flex justify-center py-2 px-4 border border-gray-700 rounded-md shadow-sm bg-gray-700 text-sm font-medium text-white hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition group">
                             <i class="fab fa-twitter text-blue-400 group-hover:opacity-20"></i>
                             <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100">Non disponible</span>

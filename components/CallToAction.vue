@@ -6,11 +6,11 @@
                 Rejoignez notre communauté de plus de 50 000 créatifs et accédez à des milliers de polices uniques.
             </p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <button
+                <button aria-label="S'inscrire gratuitement"
                     class="cursor-pointer border-2 border-white bg-white text-indigo-800 hover:bg-indigo-800 hover:border-indigo-800 hover:bg-opacity-10 hover:text-white px-8 py-4 rounded-md font-bold text-lg transition">
                     S'inscrire gratuitement
                 </button>
-                <button
+                <button aria-label="Voir les polices"
                     class="cursor-pointer border-2 border-white text-white hover:bg-white hover:text-indigo-800 hover:border-indigo-800
                     hover:bg-opacity-10 px-8 py-4 rounded-md font-bold text-lg transition">
                     Voir les polices

@@ -5,6 +5,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
+      htmlAttrs: {
+        lang: 'fr',
+      },
       link: [
         {
           rel: 'stylesheet',

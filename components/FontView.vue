@@ -17,10 +17,10 @@
             </p>
           </div>
           <div class="flex space-x-3">
-            <button class="p-3 rounded-full bg-gray-700 hover:bg-gray-600 transition w-[48px] cursor-pointer">
+            <button aria-label="Ajouter aux favoris" class="p-3 rounded-full bg-gray-700 hover:bg-gray-600 transition w-[48px] cursor-pointer">
               <i class="far fa-heart"></i>
             </button>
-            <button class="p-3 rounded-full bg-gray-700 hover:bg-gray-600 transition  w-[48px] cursor-pointer">
+            <button aria-label="Partager" class="p-3 rounded-full bg-gray-700 hover:bg-gray-600 transition  w-[48px] cursor-pointer">
               <i class="fas fa-share-alt"></i>
             </button>
           </div>
@@ -54,8 +54,8 @@
             <div v-for="(item, index) in fontWeights" :key="index">
                 <!-- <button class="font-weight-btn px-3 py-1 rounded-md bg-gray-700 hover:bg-gray-600 transition cursor-pointer" 
                 :style="{ fontWeight: item.weight }">{{ item.name }} {{ item.weight }}</button> -->
-                <button 
-                class=" px-3 py-1 rounded-md bg-gray-700 hover:bg-gray-600 transition cursor-pointer"
+                <button aria-label="Changer de variant"
+                    class=" px-3 py-1 rounded-md bg-gray-700 hover:bg-gray-600 transition cursor-pointer"
                 :class="{ 'font-weight-btn': selectedWeight === item.weight }"
                 @click="changeFontWeight(item.weight); toggleBackgroundWeight(item.weight)">
                 {{ item.weight }}
@@ -67,10 +67,10 @@
         <div class="mt-6">
           <label class="block text-sm font-medium text-gray-400 mb-2">Styles</label>
           <div class="flex flex-wrap gap-2">
-            <button class=" px-3 py-1 rounded-md bg-gray-700 hover:bg-gray-600 transition cursor-pointer "
+            <button aria-label="Normal" class=" px-3 py-1 rounded-md bg-gray-700 hover:bg-gray-600 transition cursor-pointer "
                 :class="{ 'font-style-btn': styledFont === true }"
                 @click="changeFontStyle('normal'); toggleStyledFont()">Normal</button>
-            <button class=" px-3 py-1 rounded-md bg-gray-700 hover:bg-gray-600 transition cursor-pointer italic"
+            <button aria-label="Italic" class=" px-3 py-1 rounded-md bg-gray-700 hover:bg-gray-600 transition cursor-pointer italic"
                 :class="{ 'font-style-btn': styledFont === false }"
                @click="changeFontStyle('italic'); toggleStyledFont()">Italic</button>
           </div>
@@ -124,7 +124,7 @@
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-xl font-bold">CDN de FontShare</h3>
-                        <button @click="copyToClipboard(fontShareCdnLink, 'fontshare')" 
+                        <button aria-label="Copier le code" @click="copyToClipboard(fontShareCdnLink, 'fontshare')" 
                             class="flex justify-between items-center text-gray-400 hover:text-white gap-2">
                            <p class="text-white">
                             {{ textCopyFontShare }}
@@ -141,7 +141,7 @@
             <div class="border-b border-gray-700 mb-6">
                 <!-- Mobile : noms courts -->
                 <div class="flex justify-evenly space-x-4 sm:hidden">
-                    <button
+                    <button aria-label="Changer de tab"
                     v-for="tab in tabs"
                     :key="tab.id"
                     class="tab-button pb-2 font-medium"
@@ -155,7 +155,7 @@
                 
                 <!-- SM et + : noms complets -->
                 <div class="hidden sm:flex sm:justify-evenly md:justify-start space-x-8">
-                    <button
+                    <button aria-label="Changer de tab"
                     v-for="tab in tabs"
                     :key="tab.id"
                     class="tab-button pb-2 font-medium"
@@ -485,16 +485,16 @@
                                     Téléchargez la famille complète de polices Montserrat en différents formats.
                                 </p>
                                 <div class="flex flex-wrap gap-3">
-                                    <button class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md font-medium transition flex items-center">
+                                    <button aria-label="Télécharger en TTF" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md font-medium transition flex items-center">
                                         <i class="fas fa-download mr-2"></i> TTF
                                     </button>
-                                    <button class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md font-medium transition flex items-center">
+                                    <button aria-label="Télécharger en OTF" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md font-medium transition flex items-center">
                                         <i class="fas fa-download mr-2"></i> OTF
                                     </button>
-                                    <button class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md font-medium transition flex items-center">
+                                    <button aria-label="Télécharger en WOFF" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md font-medium transition flex items-center">
                                         <i class="fas fa-download mr-2"></i> WOFF
                                     </button>
-                                    <button class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md font-medium transition flex items-center">
+                                    <button aria-label="Télécharger en WOFF2" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md font-medium transition flex items-center">
                                         <i class="fas fa-download mr-2"></i> WOFF2
                                     </button>
                                 </div>

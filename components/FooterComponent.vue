@@ -12,34 +12,34 @@
                         La plateforme ultime pour découvrir et partager des polices typographiques uniques.
                     </p>
                     <div class="flex space-x-4 mt-6">
-                        <a href="https://www.linkedin.com/in/kevin-ubeda-400045292/" target="_blank" class="text-gray-400 hover:text-indigo-400 transition">
+                        <NuxtLink to="https://www.linkedin.com/in/kevin-ubeda-400045292/" alt="LinkedIn" target="_blank" class="text-gray-400 hover:text-indigo-400 transition">
                             <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/tOCHSKa" target="_blank" class="text-gray-400 hover:text-indigo-400 transition">
+                        </NuxtLink>
+                        <NuxtLink to="https://github.com/tOCHSKa" alt="GitHub" target="_blank" class="text-gray-400 hover:text-indigo-400 transition">
                             <i class="fab fa-github"></i>
-                        </a>
+                        </NuxtLink>
                     </div>
                 </div>
 
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Navigation</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-indigo-300 transition">Accueil</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-indigo-300 transition">Explorer</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-indigo-300 transition">Tendances</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-indigo-300 transition">Collections</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-indigo-300 transition">À propos</a></li>
+                        <li><NuxtLink to="/" class="text-gray-400 hover:text-indigo-300 transition">Accueil</NuxtLink></li>
+                        <li><NuxtLink to="/explore" class="text-gray-400 hover:text-indigo-300 transition">Explorer</NuxtLink></li>
+                        <li><NuxtLink to="/trends" class="text-gray-400 hover:text-indigo-300 transition">Tendances</NuxtLink></li>
+                        <li><NuxtLink to="/collections" class="text-gray-400 hover:text-indigo-300 transition">Collections</NuxtLink></li>
+                        <li><NuxtLink to="/about" class="text-gray-400 hover:text-indigo-300 transition">À propos</NuxtLink></li>
                     </ul>
                 </div>
 
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Ressources</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-indigo-300 transition">Blog</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-indigo-300 transition">Documentation</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-indigo-300 transition">FAQ</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-indigo-300 transition">Licences</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-indigo-300 transition">Contact</a></li>
+                        <li><NuxtLink to="/blog" class="text-gray-400 hover:text-indigo-300 transition">Blog</NuxtLink></li>
+                        <li><NuxtLink to="/docs" class="text-gray-400 hover:text-indigo-300 transition">Documentation</NuxtLink></li>
+                        <li><NuxtLink to="/faq" class="text-gray-400 hover:text-indigo-300 transition">FAQ</NuxtLink></li>
+                        <li><NuxtLink to="/licences" class="text-gray-400 hover:text-indigo-300 transition">Licences</NuxtLink></li>
+                        <li><NuxtLink to="/contact" class="text-gray-400 hover:text-indigo-300 transition">Contact</NuxtLink></li>
                     </ul>
                 </div>
 
@@ -51,7 +51,7 @@
                     <div class="flex">
                         <input type="email" placeholder="Votre email"
                             class="py-2 px-4 bg-gray-700 text-white rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full">
-                        <button class="bg-indigo-600 hover:bg-indigo-700 px-4 rounded-r-md transition">
+                        <button aria-label="Envoyer" class="bg-indigo-600 hover:bg-indigo-700 px-4 rounded-r-md transition">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
@@ -63,11 +63,11 @@
                     © 2025 FontShare. Tous droits réservés.
                 </p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="text-gray-400 hover:text-indigo-300 text-sm transition">Conditions
-                        d'utilisation</a>
-                    <a href="#" class="text-gray-400 hover:text-indigo-300 text-sm transition">Politique de
-                        confidentialité</a>
-                    <a href="#" class="text-gray-400 hover:text-indigo-300 text-sm transition">Cookies</a>
+                    <NuxtLink to="/terms" class="text-gray-400 hover:text-indigo-300 text-sm transition">Conditions
+                        d'utilisation</NuxtLink>
+                    <NuxtLink to="/privacy" class="text-gray-400 hover:text-indigo-300 text-sm transition">Politique de
+                        confidentialité</NuxtLink>
+                    <NuxtLink to="/cookies" class="text-gray-400 hover:text-indigo-300 text-sm transition">Cookies</NuxtLink>
                 </div>
             </div>
         </div>
