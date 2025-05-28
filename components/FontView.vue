@@ -33,14 +33,14 @@
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div class="flex-1">
             <label class="block text-sm font-medium text-gray-400 mb-2">Texte de démonstration</label>
-            <input type="text" v-model="demoText"
+            <input type="text" v-model="demoText" aria-label="Texte de démonstration"
               class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md text-white" 
               id="demo-text">
           </div>
           <div>
             <label class="block text-sm font-medium text-gray-400 mb-2">Taille</label>
             <div class="flex items-center space-x-2">
-              <input type="range" min="12" max="72"
+              <input type="range" min="12" max="72" aria-label="Taille"
                 class="w-24" id="font-size" :value="fontSize" 
                 @change="updateFontSize($event)">
               <span class="text-sm w-12" id="font-size-value">{{ fontSize }}px</span>
@@ -55,7 +55,7 @@
                 <!-- <button class="font-weight-btn px-3 py-1 rounded-md bg-gray-700 hover:bg-gray-600 transition cursor-pointer" 
                 :style="{ fontWeight: item.weight }">{{ item.name }} {{ item.weight }}</button> -->
                 <button aria-label="Changer de variant"
-                    class=" px-3 py-1 rounded-md bg-gray-700 hover:bg-gray-600 transition cursor-pointer"
+                    class=" px-3 py-1 rounded-md text-white bg-gray-700 hover:bg-gray-600 transition cursor-pointer"
                 :class="{ 'font-weight-btn': selectedWeight === item.weight }"
                 @click="changeFontWeight(item.weight); toggleBackgroundWeight(item.weight)">
                 {{ item.weight }}
@@ -67,10 +67,10 @@
         <div class="mt-6">
           <label class="block text-sm font-medium text-gray-400 mb-2">Styles</label>
           <div class="flex flex-wrap gap-2">
-            <button aria-label="Normal" class=" px-3 py-1 rounded-md bg-gray-700 hover:bg-gray-600 transition cursor-pointer "
+            <button aria-label="Normal" class=" px-3 py-1 rounded-md text-white bg-gray-700 hover:bg-gray-600 transition cursor-pointer "
                 :class="{ 'font-style-btn': styledFont === true }"
                 @click="changeFontStyle('normal'); toggleStyledFont()">Normal</button>
-            <button aria-label="Italic" class=" px-3 py-1 rounded-md bg-gray-700 hover:bg-gray-600 transition cursor-pointer italic"
+            <button aria-label="Italic" class=" px-3 py-1 rounded-md text-white bg-gray-700 hover:bg-gray-600 transition cursor-pointer italic"
                 :class="{ 'font-style-btn': styledFont === false }"
                @click="changeFontStyle('italic'); toggleStyledFont()">Italic</button>
           </div>
@@ -106,7 +106,7 @@
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-xl font-bold">CDN de Google</h3>
-                        <button @click="copyToClipboard(googleCdnLink, 'google')" 
+                        <button aria-label="Copier le code" @click="copyToClipboard(googleCdnLink, 'google')" 
                         class="flex justify-between items-center text-gray-400 hover:text-white gap-2">
                            <p class="text-white">
                             {{ textCopyGoogle }}
@@ -114,11 +114,13 @@
                           <i class="fas fa-copy text-xl cursor-pointer"></i>
                         </button>
                       </div>
-                <textarea
-                class="w-full h-40 bg-gray-900 text-gray-300 p-4 rounded-lg border border-gray-600 resize-none"
-                readonly
-                :value="googleCdnLink"
-              />
+                      <textarea
+                    aria-label="CDN de Google"
+                    class="w-full h-40 bg-gray-900 text-gray-300 p-4 rounded-lg border border-gray-600 resize-none text-left align-top placeholder:text-gray-500"
+                    readonly
+                    :value="googleCdnLink"
+                    placeholder="<link rel='preconnect' href='https://fonts.googleapis.com'>       <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>                    <link href='https://fonts.googleapis.com/css2?family=FAMILY:wght@WEIGHTS&display=swap' rel='stylesheet'>"
+                    />
                 </div>
             
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
@@ -132,10 +134,12 @@
                           <i class="fas fa-copy text-xl cursor-pointer"></i>
                         </button>
                       </div>
-                <textarea
+                <textarea aria-label="CDN de OpenFontsHub"
                     class="w-full h-40 bg-gray-900 text-gray-300 p-4 rounded-lg border border-gray-600 resize-none"
                     readonly
-                ></textarea>
+                    :value="fontShareCdnLink"
+                    placeholder=""
+                    />
                 </div>
             </div>
             <div class="border-b border-gray-700 mb-6">
@@ -678,12 +682,12 @@ if (fontsError.value) console.error('Erreur chargement données:', fontsError.va
 }
 
 .font-weight-btn {
-    background-color: #6366f1;
+    background-color: #3A3B8C;
     color: white;
 }
 
 .font-style-btn {
-    background-color: #6366f1;
+    background-color: #3A3B8C;
     color: white;
 }
 
