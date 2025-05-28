@@ -137,8 +137,7 @@
                 <textarea aria-label="CDN de OpenFontsHub"
                     class="w-full h-40 bg-gray-900 text-gray-300 p-4 rounded-lg border border-gray-600 resize-none"
                     readonly
-                    :value="fontShareCdnLink"
-                    placeholder=""
+                    :placeholder="fontShareCdnLink"
                     />
                 </div>
             </div>
@@ -517,7 +516,11 @@ import { useAsyncData } from '#app'
 
 // === ROUTE & FONT NAME ===
 const route = useRoute()
-const fontName = route.params.font
+
+const props = defineProps({
+    fontName: String,
+})
+
 const selectedWeights = ref([])
 const textCopyFontShare = ref('')
 const textCopyGoogle= ref('')
@@ -532,6 +535,7 @@ const googleCdnLink = computed(() => {
 <link href="https://fonts.googleapis.com/css2?family=${family}:wght@${weights}&display=swap" rel="stylesheet">`
 })
 
+const fontShareCdnLink = ref('Lien CDN non disponible')
 
 const copyToClipboard = async (value, type) => {
   try {
@@ -556,7 +560,7 @@ const formatFontNameForUrl = (name) =>
     .map(w => w.charAt(0).toUpperCase() + w.slice(1))
     .join('+')
 
-const formattedName = formatFontNameForUrl(fontName)
+const formattedName = formatFontNameForUrl(props.fontName)
 const fontUrl = `https://fonts.google.com/specimen/${formattedName}/license`
 
 
@@ -569,7 +573,7 @@ const { data: fontsData, error: fontsError } = await useAsyncData('font-data', (
 )
 
 const font = computed(() => {
-  const key = fontName.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+  const key = props.fontName.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
   return fontsData.value?.[key] || null
 })
 
@@ -578,7 +582,7 @@ const { data: fontDescriptionData } = await useAsyncData('font-description', () 
 )
 
 const fontDescription = computed(() => {
-  const key = fontName.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  const key = props.fontName.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
   return fontDescriptionData.value?.find(f => f.family === key)?.description || 'Description indisponible';
 });
 
@@ -607,7 +611,7 @@ const changeFontStyle = (s) => fontStyle.value = s
 const toggleBackgroundWeight = (w) => selectedWeight.value = w
 
 const fontDisplayStyle = computed(() => ({
-  fontFamily: fontName,
+  fontFamily: props.fontName,
   fontSize: `${fontSize.value}px`,
   fontWeight: fontWeight.value,
   fontStyle: fontStyle.value,

@@ -78,7 +78,6 @@ if (fontsData.value) {
 // Computed qui filtre et limite à 50 résultats
 const filteredFonts = computed(() => {
   if (!debouncedQuery.value.trim()) return []
-    console.log(fontArray.value)
   return fontArray.value
     .filter(family =>
       family.toLowerCase().includes(debouncedQuery.value.toLowerCase())

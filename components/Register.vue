@@ -269,7 +269,6 @@ const onSubmit = async () => {
     })
 
     const data = await res.json()
-    console.log(data)
     if (!res.ok) {
         message.value = data.message
       return
