@@ -12,7 +12,7 @@
                             <i class="fas fa-user text-xl"></i>
                         </div>
                         <div>
-                            <h4 class="font-medium">Marie Dubois</h4>
+                            <h3 class="font-medium">Marie Dubois</h3>
                             <p class="text-sm text-gray-400">Designer UI/UX</p>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                             <i class="fas fa-user text-xl"></i>
                         </div>
                         <div>
-                            <h4 class="font-medium">Thomas Leroy</h4>
+                            <h3 class="font-medium">Thomas Leroy</h3>
                             <p class="text-sm text-gray-400">Développeur Front-end</p>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                             <i class="fas fa-user text-xl"></i>
                         </div>
                         <div>
-                            <h4 class="font-medium">Sophie Martin</h4>
+                            <h3 class="font-medium">Sophie Martin</h3>
                             <p class="text-sm text-gray-400">Directrice Artistique</p>
                         </div>
                     </div>

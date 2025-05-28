@@ -12,11 +12,23 @@
                         La plateforme ultime pour découvrir et partager des polices typographiques uniques.
                     </p>
                     <div class="flex space-x-4 mt-6">
-                        <NuxtLink to="https://www.linkedin.com/in/kevin-ubeda-400045292/" alt="LinkedIn" target="_blank" class="text-gray-400 hover:text-indigo-400 transition">
+                        <NuxtLink
+                            to="https://www.linkedin.com/in/kevin-ubeda-400045292/"
+                            target="_blank"
+                            class="text-gray-400 hover:text-indigo-400 transition"
+                            rel="noopener noreferrer"
+                        >
                             <i class="fab fa-linkedin"></i>
+                            <span class="sr-only">LinkedIn</span>
                         </NuxtLink>
-                        <NuxtLink to="https://github.com/tOCHSKa" alt="GitHub" target="_blank" class="text-gray-400 hover:text-indigo-400 transition">
+                        <NuxtLink
+                            to="https://github.com/tOCHSKa"
+                            target="_blank"
+                            class="text-gray-400 hover:text-indigo-400 transition"
+                            rel="noopener noreferrer"
+                        >
                             <i class="fab fa-github"></i>
+                            <span class="sr-only">GitHub</span>
                         </NuxtLink>
                     </div>
                 </div>
@@ -77,5 +89,16 @@
 
 </script>
 <style lang="scss" scoped>
-    
+.sr-only {
+  position: absolute !important;
+  width: 1px; 
+  height: 1px; 
+  padding: 0; 
+  margin: -1px; 
+  overflow: hidden; 
+  clip: rect(0, 0, 0, 0); 
+  white-space: nowrap; 
+  border: 0;
+}
+
 </style>
