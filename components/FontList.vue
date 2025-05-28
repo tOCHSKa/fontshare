@@ -126,27 +126,67 @@
 <script setup>
 import { debounce } from 'lodash-es'
 
-// Refs & Variables principales
+/**
+ * Liste des polices chargées et triées par nom.
+ * @type {Ref<Array<Object>>}
+ */
 const fontArray = ref([])
+
+/**
+ * Requête de recherche utilisateur (non debounced).
+ * @type {Ref<string>}
+ */
 const searchQuery = ref('')
+
+/**
+ * Requête de recherche avec debounce (mise à jour après 300ms).
+ * @type {Ref<string>}
+ */
 const debouncedQuery = ref('')
+
+/**
+ * Référence à l'élément input de recherche.
+ * @type {Ref<HTMLInputElement|null>}
+ */
 const searchInput = ref(null)
+
+/**
+ * Page actuelle de la pagination.
+ * @type {Ref<number>}
+ */
 const currentPage = ref(1)
-const itemsPerPage = 9 // 3 cols * 3 rows, ajustable
+
+/**
+ * Nombre d'éléments à afficher par page.
+ * @type {number}
+ */
+const itemsPerPage = 9
+
+/**
+ * Catégorie de police sélectionnée pour filtrer.
+ * @type {Ref<string>}
+ */
 const filter = ref('all')
 
-// Données fetchées
+/**
+ * Récupération des données de polices.
+ * @type {Promise}
+ */
 const { data: fontsData, error: fontsError } = await useAsyncData('font-data', () =>
   $fetch('https://fontshare.netlify.app/fonts-with-desc.json')
 )
 
-// Initialisation des données
+/**
+ * Trie et stocke les polices si les données sont disponibles.
+ */
 if (fontsData.value) {
   const allFonts = Object.values(fontsData.value)
   fontArray.value = allFonts.sort((a, b) => a.family.localeCompare(b.family))
 }
 
-// Computed
+/**
+ * Liste des polices filtrées selon la recherche et la catégorie.
+ */
 const filteredFonts = computed(() => {
   let result = fontArray.value
 
@@ -164,16 +204,25 @@ const filteredFonts = computed(() => {
   return result
 })
 
+/**
+ * Calcule le nombre total de pages basé sur le filtre actuel.
+ */
 const totalPages = computed(() => {
   return Math.ceil(filteredFonts.value.length / itemsPerPage)
 })
 
+/**
+ * Retourne les polices à afficher sur la page courante.
+ */
 const paginatedFonts = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage
   const end = start + itemsPerPage
   return filteredFonts.value.slice(start, end)
 })
 
+/**
+ * Retourne une liste des pages visibles dans la pagination.
+ */
 const visiblePages = computed(() => {
   const maxVisible = 5
   const pages = []
@@ -192,45 +241,33 @@ const visiblePages = computed(() => {
   return pages
 })
 
-// Fonctions
+/**
+ * Filtre les polices par catégorie.
+ * @param {string} category - Nom de la catégorie à appliquer.
+ */
 const filterFonts = (category) => {
   filter.value = category
   currentPage.value = 1
   searchQuery.value = ''
 }
 
-const focusFirst = () => {
-  const items = document.querySelectorAll('[tabindex="0"]')
-  if (items.length) {
-    items[0].focus()
-  }
-}
+// -- Watchers --
 
-const focusNext = (currentIndex) => {
-  const items = document.querySelectorAll('[tabindex="0"]')
-  if (currentIndex + 1 < items.length) {
-    items[currentIndex + 1].focus()
-  }
-}
-
-const focusPrev = (currentIndex) => {
-  const items = document.querySelectorAll('[tabindex="0"]')
-  if (currentIndex - 1 >= 0) {
-    items[currentIndex - 1].focus()
-  } else {
-    searchInput.value?.focus()
-  }
-}
-
-// Watchers
+/**
+ * Met à jour la valeur debounced de la recherche.
+ */
 watch(searchQuery, debounce((val) => {
   debouncedQuery.value = val
 }, 300))
 
+/**
+ * Réinitialise la pagination lorsque la recherche ou le filtre changent.
+ */
 watch([debouncedQuery, filter], () => {
   currentPage.value = 1
 })
 </script>
+
 
 
 <style scoped>
