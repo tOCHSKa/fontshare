@@ -10,7 +10,7 @@
           
           <div class="hidden md:flex space-x-6">
               <NuxtLink to="/explorer" class="hover:text-indigo-300 transition">Explorer</NuxtLink>
-              <NuxtLink to="/trends" class="hover:text-indigo-300 transition">Tendances</NuxtLink>
+              <NuxtLink to="/blog" class="hover:text-indigo-300 transition">Blog</NuxtLink>
               <NuxtLink to="/collections" class="hover:text-indigo-300 transition">Collections</NuxtLink>
               <NuxtLink to="/about" class="hover:text-indigo-300 transition">À propos</NuxtLink>
           </div>

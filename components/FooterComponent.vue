@@ -38,7 +38,7 @@
                     <ul class="space-y-2">
                         <li><NuxtLink to="/" class="text-gray-400 hover:text-indigo-300 transition">Accueil</NuxtLink></li>
                         <li><NuxtLink to="/explore" class="text-gray-400 hover:text-indigo-300 transition">Explorer</NuxtLink></li>
-                        <li><NuxtLink to="/trends" class="text-gray-400 hover:text-indigo-300 transition">Tendances</NuxtLink></li>
+                        <li><NuxtLink to="/blog" class="text-gray-400 hover:text-indigo-300 transition">Blog</NuxtLink></li>
                         <li><NuxtLink to="/collections" class="text-gray-400 hover:text-indigo-300 transition">Collections</NuxtLink></li>
                         <li><NuxtLink to="/about" class="text-gray-400 hover:text-indigo-300 transition">À propos</NuxtLink></li>
                     </ul>
@@ -47,7 +47,6 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Ressources</h3>
                     <ul class="space-y-2">
-                        <li><NuxtLink to="/blog" class="text-gray-400 hover:text-indigo-300 transition">Blog</NuxtLink></li>
                         <li><NuxtLink to="/docs" class="text-gray-400 hover:text-indigo-300 transition">Documentation</NuxtLink></li>
                         <li><NuxtLink to="/faq" class="text-gray-400 hover:text-indigo-300 transition">FAQ</NuxtLink></li>
                         <li><NuxtLink to="/licences" class="text-gray-400 hover:text-indigo-300 transition">Licences</NuxtLink></li>

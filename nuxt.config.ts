@@ -25,4 +25,8 @@ export default defineNuxtConfig({
       tailwindcss(),
     ],
   },
+  components: [
+    { path: '~/components', pathPrefix: true },
+    { path: '~/components/PageBlog', pathPrefix: false },
+  ]
 })
